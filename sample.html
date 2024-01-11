@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <title>情報活用ホームページ作成実習</title>
+    <style type="text/css">
+      .kyocyo {
+        color: red;
+        background-color: #ffccff;
+      }
+
+      h1 {
+        font-size: xx-large;
+        direction: ltr;
+        letter-spacing: 1em;
+        text-align: center;
+        font-style: italic;
+        text-shadow: 5px 5px 3px silver;
+      }
+
+      h2 {
+        color: #33ffff;
+        background-color: #ffffcc;
+        margin-left: 20px;
+        padding-left: 20px;
+        padding-top: 10px;
+        border-left: 30px solid #33ffff;
+        border-bottom: 3px dotted #33ffff;
+        border-top-left-radius: 50px 30px;
+      }
+
+      .kisuu {
+        list-style-position: inside;
+        list-style-type: circle;
+        margin-left: 20px;
+        padding-left: 10px;
+      }
+
+      a:hover {
+        color: red;
+      }
+
+      a:active {
+        font-size: larger;
+      }
+
+      #table1 {
+        width: 80%;
+        background-color: #ffffcc;
+        border: 3pt solid black;
+        border-spacing: 10px;
+      }
+
+      .cell1 {
+        background-color: #ffcc00;
+        border: 2px solid black;
+      }
+
+      #table2 {
+        border-style: none;
+        border-spacing: 0px;
+        color: white;
+        background-color: white;
+        border-collapse: collapse;
+      }
+
+      .acell {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+
+      #abs1 {
+        background-color: #ffff66;
+        width: 200px;
+        height: 200px;
+        top: 20px;
+        right: 20px;
+        position: absolute;
+        z-index: 1;
+      }
+
+      #abs2 {
+        background-color: #ffcc00;
+        width: 200px;
+        height: 200px;
+        top: 40px;
+        right: 40px;
+        position: absolute;
+        z-index: 5;
+        opacity: 0.8;
+      }
+
+      #fix1 {
+        background-color: #ccccff;
+        width: 200px;
+        height: 50px;
+        right: 10px;
+        bottom: 10px;
+        position: fixed;
+      }
+
+      .fcont {
+        background-color: #ffcc99;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .fitem {
+        background-color: #ffff99;
+      }
+
+      #grow1 {
+        background-color: #99ff99;
+        flex-grow: 1;
+        flex-shrink: 0;
+      }
+
+      #grow2 {
+        background-color: #99ffff;
+        flex-grow: 2;
+        align-items: stretch;
+        align-self: stretch;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .item {
+        background-color: #ffccff;
+        width: 200px;
+        flex-direction: row;
+      }
+    </style>
+    <script type="application/x-javascript">
+      function doAlert(){
+        let input = prompt('どんな言葉でもいいですよ');
+        alert('あなた、' + input + 'と入力しましたね？');
+      }
+      function calcValues(){
+        let input1;
+        let input2;
+        const form1 = document.querySelector('#n1');
+        const form2 = document.querySelector('#n2');
+        const outdiv =document.querySelector('#output');
+        while(true){
+          input1 = form1.value;
+          //alert('型は' + typeof(input1) + 'です');
+          if (isNaN(input1) ){
+          	alert('数値しかダメです');
+          } else {
+            break;
+          }
+        }
+        for ( let i = 1; i <= 3 ; i++ ){
+        	input2 = form2.value;
+          if (isNaN(input2)){
+          	alert(i + '回目の間違いです')
+          } else{
+          break;
+          }
+        }
+        let result = new Array(5);
+        result[0] = parseFloat(input1) + parseFloat(input2);
+        result[1] = input1 - input2;
+        result[2] = input1 * input2;
+        result[3] = input1 / input2;
+        result[4] = input1 % input2;
+        const opname = ['和','差','積','商','余り'];
+        outdiv.innerText = `${opname[0]}は${result[0]}、${opname[1]}は${result[1]}、${opname[2]}は${result[2]}、${opname[3]}は${result[3]}、${opname[4]}は${result[4]}です`;
+      }
+    </script>
+  </head>
+  <body
+    style="
+      background-color: #c3f4f4;
+      background-image: url('circle.png');
+      background-repeat: repeat;
+      background-attachment: fixed;
+    "
+  >
+    <h1>情報活用A作成実習</h1>
+    <p>目次</p>
+    <ol>
+      <li><a href="#para">箇条書き・段落番号</a></li>
+      <li><a href="#hyper">ハイパーリンク</a></li>
+      <li><a href="#gif">GIF/PNG画像</a></li>
+      <li><a href="#jpeg">JPEG画像</a></li>
+      <li><a href="#img">外部の画像</a></li>
+      <li><a href="#color">色の表現</a></li>
+      <li><a href="#inline">スタイルシート（インライン）</a></li>
+      <li><a href="#img">画像</a></li>
+      <li><a href="#class">スタイルシート（クラス）</a></li>
+      <li><a href="#fclass">疑似クラス</a></li>
+      <li><a href="#inframe">インラインフレーム（ソース編）</a></li>
+      <li><a href="#innerlink">ページ内リンク</a></li>
+    </ol>
+    <p><br /></p>
+    <p>
+      上の行を見出しレベル1に変更してください。タグにどのような変化が起きたでしょうか？<br />答え
+      &lt;p&gt;&lt;/p&gt;タグが　&lt;h1&gt;&lt;/h1&gt; タグに変化した。
+    </p>
+    <p>
+      同じ段落で改行だけしたいときはシフトキーを押しながらエンターしてください。<br />改行を意味するタグは何でしょうか？<br />答え
+      &lt;br&gt;タグ（独立タグです）
+    </p>
+    <h2 id="para">箇条書き・段落番号</h2>
+    <p>上の行を見出しレベル2に変更してください。</p>
+    <ul>
+      <li class="kisuu">
+        箇条書きは全体の始まりと終わり、項目の始まりと終わりの二重構造になっています。
+      </li>
+      <li>
+        箇条書き全体の始まりを表すタグは何でしょうか？<br />答え
+        &lt;ul&gt;&lt;/ul&gt; タグ
+      </li>
+      <li class="kisuu">
+        項目の始まりを表すタグは何でしょうか？<br />答え &lt;li&gt;&lt;/li&gt;
+        タグ
+      </li>
+      <li>
+        箇条書きをやめるときはサイドバーの箇条書きボタンをもう一度押します（トグル）
+      </li>
+    </ul>
+    <ol>
+      <li>
+        段落番号の始まりと終わりを表すタグは何でしょうか？<br />答え&nbsp;
+        ol&nbsp; タグ
+      </li>
+      <li>項目を表すタグは箇条書きと同じです</li>
+      <li>番号は自動的に振られます。番号を自作しないでください</li>
+    </ol>
+    <p><b>太字</b>、<i>斜体</i>、<u>下線</u></p>
+    <p>
+      下線のついた状態で改行すると次の行に引き継がれてしまいます。メニュー、書式、すべての文字<span
+        style="text-decoration: line-through"
+        >スタイル削除</span
+      >で装飾がない状態に戻ります。
+    </p>
+    <p>
+      太字、斜線、下線を表すタグは何でしょうか？<u><br /></u>答え&nbsp;&nbsp; b
+      &nbsp; i&nbsp;&nbsp; u
+    </p>
+    <h2 id="hyper">ハイパーリンク</h2>
+    <p><a href="http://www.yahoo.co.jp/">Yahoo</a>に行く</p>
+    <p>
+      HTTPSはハイパーテキストトランスファープロトコル・セキュアの略、HTMLはハイパーテキストマークアップランゲージの略、ホームページのアドレスであるURLはユニフォームリソースロケーターの略です。
+    </p>
+    <p><a href="https://www.google.co.jp/" target="_blank">Google</a>へ行く</p>
+    <p>
+      リンクを作るとき、リンクを開く場所をチェックし、新規ウィンドウを指定してみてください。上の二つのリンクの振る舞いはどう違うでしょうか？<br />答え　元のサイト上で開かれるか、新しいタブができて開かれるか。
+    </p>
+    <p>
+      リンクを表すタグは何でしょうか？また、リンク先を表す属性の名前は何でしょうか？<br />答え&nbsp;
+      a&nbsp; タグ、&nbsp; href&nbsp; 属性
+    </p>
+    <hr />
+    水平線は独立タグです。名前は何でしょうか？<br />
+    <p>答え&nbsp; hr&nbsp; タグ</p>
+    <h2 id="gif">GIF/PNG画像</h2>
+    <p>
+      <img
+        src="bean.gif"
+        alt="豆のキャラクター"
+        style="float: left"
+      />画像が挿入出来たら、画像を表すタグとファイル名を表す属性を調べてください
+    </p>
+    <p>答え&nbsp; img&nbsp; タグ、 src,&nbsp;&nbsp; 属性</p>
+    <p style="clear: left">
+      画像により行が高くなっているために空白の部分があります。後で画像と文章のレイアウトを行いますので、今は置いておいてください。
+    </p>
+    <h2 id="jpeg">JPEG画像</h2>
+    <p>
+      <img
+        src="angel-noise.jpg"
+        alt="ノイズあり画像"
+        style="float: right"
+      />JPEG画像のクオリティ値を下げていくと、線の周りにもやもやとしたノイズが現れます。これがモスキートノイズです。画像の高周波成分をカットしたことにより、急なコントラストの変化が再現できなくなりました。さらにクオリティを下げると、JPEGが圧縮処理をするときのタイル分割が目に見えるようになってきます。これがブロックノイズです。
+    </p>
+    <p style="clear: right">
+      JPEGは画像の圧縮力が高いのですが、このようなノイズが多かれ少なかれ現れます。ただ写真で多少ノイズがあっても人間の目ではわかりません。そのため多くの画像ファイルはJPEGになっています。
+    </p>
+    <h2 id="img">外部の画像</h2>
+    <p>
+      <img
+        src="https://www.seikei.ac.jp/university/sched/img/logo.gif"
+        alt="センターのロゴ"
+      />
+    </p>
+    <p>外部の画像がどのように表現されているかimgタグを確認してください。</p>
+    <h2 id="color">色の表現</h2>
+    <p>0 1 10 11 100 101 110 111 1000</p>
+    <p>
+      00 01 02 03 ... 09 0A 0B 0C ... 0F 10(16) 11 12 ...19 1A ... 1F 20 ... 9F
+      A0 ... AF B0 ... F0 F1 ... FE FF(255)
+    </p>
+    <p>16進数のBFの次の数を16進数で表現してください<br />答え 191</p>
+    <p>16進数ECは10進数に直すと何でしょうか？<br />答え 236</p>
+    <p>光の三原色　赤、緑、青</p>
+    <p>
+      光の三原色赤、緑、青この強さを2桁の16進数で表し、#を頭につけて並べて表現します。例えば#FE1A3C
+    </p>
+    <p>#FFFFFF（白）#000000（黒）</p>
+    <h2 id="inline">スタイルシート（インライン）</h2>
+    <p>
+      bodyタグのstyleオプションの値として出てきた"background-color:
+      #?????;"がスタイルシート（インライン）です。
+    </p>
+    <p>プロパティ（何を）　:（コロン）　値（どうする）　;（セミコロン）</p>
+    <p>が一つの単位になります。</p>
+    <p>
+      画像と文章をレイアウトし、また解除してみてください。画像の右寄せ、左寄せを表すスタイルシートのプロパティは何でしょうか？
+    </p>
+    <p>答え float</p>
+    <p>折り返しを解除するスタイルシートのプロパティは何でしょうか？</p>
+    <p>答え clear</p>
+    <p>JPEG画像を右寄せにレイアウトし、また折り返しを解除してください。</p>
+    <h2 id="back">背景画像</h2>
+    <p>
+      背景画像は文字色と被らないよう、黒い輪郭線は使わないでください。明るい色を使うようにします。
+    </p>
+    <p>
+      背景画像を表すスタイルシートのプロパティは何でしょうか？<br />答え
+      background-image
+    </p>
+    <p>
+      背景画像をビューポート固定にしてみると、スクロールしても背景が動かなくなります。ビューポート固定しているスタイルシートのプロパティは何でしょうか？<br />答え
+      background-attachment
+    </p>
+    <h2 id="class">スタイルシート（クラス）</h2>
+    <p>スタイルシートはホームページのデザインを統一的にコントロールします。</p>
+    <p>
+      この<span class="kyocyo">文字列</span>は強調されています。この<span
+        class="kyocyo"
+        >文字列</span
+      >も強調されています。
+    </p>
+    <p>
+      spanタグは文章の一部を指定します。class属性は複数のspanで囲まれた場所に名前（クラス名）を付けます。具体的なデザインはページコード最上部、styleタグの中にあります。これがスタイルシートです。ドットで始まるのはクラス名です。
+    </p>
+    <ul></ul>
+    <h2 id="fclass">疑似クラス</h2>
+    <p>
+      マウスカーソルが上に載っているときのように、ある状態を指定したものが疑似クラスです。スタイルシートを確認してください。セレクタの次に続いているのが状態を表す疑似クラスです。
+    </p>
+    <p>
+      activeという疑似クラスは、どのような状態を表す疑似クラスでしょうか？<br />答え　クリックされたときの状態を表す疑似クラス
+    </p>
+    <p>ゆっくりクリックするとわかりやすくなります。</p>
+    <h2 id="inframe">インラインフレーム（ソース編集）</h2>
+    <p>ソースを直接編集し、インラインフレームでほかのページを埋め込む</p>
+    <p>
+      <iframe
+        src="https://www.seikei.ac.jp/university/sched/yokuaru-qa.html"
+        height="500px"
+        width="800px"
+      >
+        インラインフレームが表示できないときのテキスト
+      </iframe>
+    </p>
+    <p>
+      インラインフレームにはアドレスが表示されません。普段見慣れているページの一部に悪意のあるページが埋め込まれていることがあります。
+    </p>
+    <h2><a id="innerlink">ページ内リンク</a></h2>
+    <p>
+      ページ内リンクの行き先はいろいろな呼び方がありますが、BlueGriffonではアンカーと呼ばれています。名前は半角英数字で他と重複しないようにつけてください。
+    </p>
+    <p>
+      上のレベル2見出しにアンカーを作成します。レベル2見出しの目次を完成させてください。
+    </p>
+    <p>
+      アンカーを表すタグと、アンカーにつけられた名前を表す属性は何でしょうか？<br />答え　a&nbsp;
+      タグ　属性&nbsp; id
+    </p>
+    <h2>著作権とライセンス</h2>
+    <p><br /></p>
+    <p
+      xmlns:cc="http://creativecommons.org/ns#"
+      xmlns:dct="http://purl.org/dc/terms/"
+    >
+      <span property="dct:title">pracwebsite</span> by
+      <span property="cc:attributionName">Natsuki Kera</span> is licensed under
+      <a
+        href="http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1"
+        target="_blank"
+        rel="license noopener noreferrer"
+        style="display: inline-block"
+        >CC BY-NC-ND 4.0<img
+          style="
+            height: 22px !important;
+            margin-left: 3px;
+            vertical-align: text-bottom;
+          "
+          src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img
+          style="
+            height: 22px !important;
+            margin-left: 3px;
+            vertical-align: text-bottom;
+          "
+          src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img
+          style="
+            height: 22px !important;
+            margin-left: 3px;
+            vertical-align: text-bottom;
+          "
+          src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" /><img
+          style="
+            height: 22px !important;
+            margin-left: 3px;
+            vertical-align: text-bottom;
+          "
+          src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1"
+      /></a>
+    </p>
+    <h2
+      xmlns:cc="http://creativecommons.org/ns#"
+      xmlns:dct="http://purl.org/dc/terms/"
+    >
+      表
+    </h2>
+    <table id="table1" border="1">
+      <caption>
+        ホームページで使われる拡張子
+      </caption>
+      <thead>
+        <tr>
+          <th class="cell1">拡張子</th>
+          <th class="cell1">読み方</th>
+          <th class="cell1">内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cell1">html, htm</td>
+          <td class="cell1">エイチティエムエル</td>
+          <td class="cell1">ホームページテキスト</td>
+        </tr>
+        <tr>
+          <td rowspan="1" colspan="3" style="height: 24.8px" class="cell1">
+            画像ファイル
+          </td>
+        </tr>
+        <tr>
+          <td class="cell1">gif</td>
+          <td class="cell1">ジフ</td>
+          <td style="width: 456.65px" class="cell1">イラスト画像、　256色</td>
+        </tr>
+        <tr>
+          <td style="width: 239.533px" class="cell1">jpg</td>
+          <td
+            style="height: 24.8px; width: 407.583px"
+            rowspan="2"
+            colspan="1"
+            class="cell1"
+          >
+            ジェイペグ
+          </td>
+          <td class="cell1">写真などの画像</td>
+        </tr>
+        <tr>
+          <td style="height: 24.8px" class="cell1">jpeg</td>
+
+          <td class="cell1"><br /></td>
+        </tr>
+        <tr>
+          <td class="cell1">png</td>
+          <td class="cell1">ピング</td>
+          <td class="cell1">イラスト画像</td>
+        </tr>
+        <tr>
+          <td style="height: 24.8px" class="cell1">css</td>
+          <td class="cell1">シーエスエス</td>
+          <td class="cell1">スタイルシート</td>
+        </tr>
+        <tr>
+          <td class="cell1">js</td>
+          <td class="cell1">ジェイエス</td>
+          <td class="cell1">javascriptプログラム</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      表を表すタグは多重構造になっています。表の始まりと終わり、行の始まりと終わり、セルの始まりと終わりを表すタグは何でしょうか？<br />答え　表　table　行　tr　セル（見出し以外）　td
+    </p>
+    <p>見出しセルを表すタグは何でしょうか？<br />答え　th</p>
+    <p>
+      セルを横に結合するとどのような変化が起きるでしょうか？セルを横に結合した数を表す属性はなんでしょうか？<br />答え　１行がひとつのセルとなる　属性　colspan
+    </p>
+    <p>
+      セルを縦に結合するとどのような変化が起きるでしょうか？セルを縦に結合した数を表す属性は何でしょうか？<br />答え　縦に並んだセルが一つのセルになる　属性　rowspan
+    </p>
+    <p>
+      表の罫線に見えるものは実は罫線ではなく、セルとセルの間の隙間です。これを調整するのが表全体のスタイルシートにあるborder-spacingの値です。
+    </p>
+    <p>これは宿題です</p>
+    <table style="width: 100%" id="table2" border="1">
+      <tbody>
+        <tr>
+          <td class="acell"><br /></td>
+          <td class="acell"><br /></td>
+          <td class="acell"><br /></td>
+        </tr>
+        <tr>
+          <td class="acell"><br /></td>
+          <td class="acell"><br /></td>
+          <td class="acell"><br /></td>
+        </tr>
+        <tr>
+          <td class="acell"><br /></td>
+          <td class="acell"><br /></td>
+          <td class="acell"><br /></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>フォーム</h2>
+    <p>検索、アンケートなど、情報を送信する仕組み。</p>
+    <form name="Google" action="https://www.google.co.jp/search" method="GET">
+      <input name="q" size="30" maxlength="255" type="text" /><input
+        name="btnG"
+        value="Google検索"
+        type="submit"
+      /><br /><br /><br />
+    </form>
+    <p>
+      フォームの枠を表すタグ、送信先を表す属性は何でしょうか？<br />答え　formタグ　属性　action
+    </p>
+    <p>
+      テキスト入力窓を表すタグ、および属性とその値は何でしょうか？<br />答え　inputタグ　属性　type　値　text
+    </p>
+    <p>
+      送信ボタンを表すタグ、および属性とその値は何でしょうか？<br />答え　inputタグ　属性　type　値　submit
+    </p>
+    <p>
+      GETはURLの一部として情報が送信される仕組み。?で区切った後ろに情報が&amp;でつなげられて送信される。
+    </p>
+    <h2>DIV</h2>
+    <div id="abs2">ソースで作ったパラグラフです。</div>
+    <div id="abs1">
+      パラグラフをDIVに変換します。パラグラフが作成できないときは、ソースで&lt;p&gt;と入力してみてください。
+    </div>
+    <div id="fix1">いいね！押してね！</div>
+    <p>
+      DIVの位置が親要素に対して絶対位置であることを意味するスタイルシートプロパティ名とその値はなんでしょうか？<br />答え　プロパティ　position　値　absolute
+    </p>
+    <p>
+      練習問題で作った、「固定」の位置にあるDIVは「絶対」の位置にあるDIVとどう異なるでしょうか？<br />絶対はwebサイト全体の絶対値だったのに対して、固定は画面全体の絶対値になっている。
+    </p>
+    <p>
+      DIVの位置が固定であることを意味するスタイルシートプロパティ名とその値はなんでしょうか？<br />答え　プロパティ　position　値　fixed
+    </p>
+    <h2>CSSレイアウト</h2>
+    <p>
+      子要素がFlexboxでレイアウトされることを表すプロパティとその値は何でしょうか？<br />プロパティ　display　値　flex
+    </p>
+    <div class="fcont">
+      <div class="fitem">トップ画像</div>
+      <div class="fitem">タイトル</div>
+      <div class="fitem">ナビゲーション</div>
+      <div id="grow1">本文</div>
+      <div id="grow2">
+        <div class="item">記事1</div>
+        <div class="item">記事2</div>
+        <div class="item">記事3</div>
+        <div class="item">記事4</div>
+        <div class="item">記事5</div>
+        <div class="item">記事6</div>
+        <div class="item">記事7</div>
+        <div class="item">記事8</div>
+      </div>
+      <div class="fitem">フッタ―</div>
+    </div>
+    <h2>スクリプト</h2>
+    <p>
+      <button name="button1" onclick="doAlert()">起動！</button>
+      <button name="button2" onclick="calcValues()">計算！</button>
+    </p>
+    <p>入力1<input name="f1" id="n1" type="text" /></p>
+    <p>入力2<input name="f2" id="n2" type="text" /></p>
+    <div id="output">ここに答えが！</div>
+  </body>
+</html>
