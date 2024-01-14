@@ -207,6 +207,12 @@
         color: #ccebe6;
         background: #fff;
       }
+      code {
+        display: inline-block;
+        padding: 0.1em 0.2em;
+        background-color: #e7edf3;
+        border-radius: 3px;
+      }
     </style>
     <script type="application/x-javascript"></script>
   </head>
@@ -248,11 +254,18 @@
     <div class="timeline">
       <div class="list">
         <h2 class="title">useStateの説明</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <p class="content">
+          関数コンポーネントでstateを管理（stateの保持や更新）するための<br />Reactフック。
+        </p>
       </div>
       <div class="list">
         <h2 class="title">使用例</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <p class="content">
+          <code>
+            const [count, setCount] = useState(0);<br />setCount(count +
+            1);</code
+          >
+        </p>
       </div>
       <div class="list">
         <h2 class="title">コードの説明</h2>
@@ -282,7 +295,7 @@
     <div class="timeline">
       <div class="list">
         <h2 class="title">useStateの説明</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <p class="content"><br />ここから改行</p>
       </div>
       <div class="list">
         <h2 class="title">使用例</h2>
@@ -320,7 +333,7 @@
             <img src="./useState.png" alt="useStateの写真" />
           </div>
           <h3 class="title">useState</h3>
-          <p class="content">詳細な説明</p>
+          <p class="content">カウントアップするサンプル</p>
           <a href="https://react-hooks-mocha.vercel.app/useState" class="btn"
             >詳しく見る</a
           >
@@ -330,7 +343,7 @@
             <img src="./useRef.png" alt="useRefの写真" />
           </div>
           <h3 class="title">useRef</h3>
-          <p class="content">詳細な説明</p>
+          <p class="content">ボックスの中身を所得するサンプル</p>
           <a href="https://react-hooks-mocha.vercel.app/useRef" class="btn"
             >詳しく見る</a
           >
@@ -340,7 +353,7 @@
             <img src="./useReducer.png" alt="useReducerの写真" />
           </div>
           <h3 class="title">useReducer</h3>
-          <p class="content">詳細な説明</p>
+          <p class="content">差分を見てカウントの値を変更するサンプル</p>
           <a href="https://react-hooks-mocha.vercel.app/useReducer" class="btn"
             >詳しく見る</a
           >
@@ -350,7 +363,9 @@
             <img src="./useMemo.png" alt="useMemoの写真" />
           </div>
           <h3 class="title">useMemo</h3>
-          <p class="content">詳細な説明</p>
+          <p class="content">
+            一度処理したものをストレージに残しておくサンプル
+          </p>
           <a href="https://react-hooks-mocha.vercel.app/useMemo" class="btn"
             >詳しく見る</a
           >
