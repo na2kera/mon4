@@ -269,7 +269,9 @@
       </div>
       <div class="list">
         <h2 class="title">コードの説明</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <p class="content">
+          useStateの引数で初期化<br />setCountが呼び出されるごとに変数を更新。<br />ある関数内でも呼び出せる。
+        </p>
       </div>
     </div>
     <div class="subtitle">
@@ -277,16 +279,25 @@
     </div>
     <div class="timeline">
       <div class="list">
-        <h2 class="title">useStateの説明</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <h2 class="title">useRefの説明</h2>
+        <p class="content">
+          DOMを参照して要素にアクセスするためのhooks<br />レンダリングを起こさず値を保持する
+        </p>
       </div>
       <div class="list">
         <h2 class="title">使用例</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <p class="content">
+          <code>
+            const ref = useRef(null);<br />
+            console.log(ref.current.value);</code
+          >
+        </p>
       </div>
       <div class="list">
         <h2 class="title">コードの説明</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <p class="content">
+          useRefの引数で値を初期化。<br />ref変数に値を格納。<br />ref.current.valueで入力された値を取り出す。
+        </p>
       </div>
     </div>
     <div class="subtitle">
@@ -294,16 +305,25 @@
     </div>
     <div class="timeline">
       <div class="list">
-        <h2 class="title">useStateの説明</h2>
-        <p class="content"><br />ここから改行</p>
+        <h2 class="title">useReducerの説明</h2>
+        <p class="content">
+          状態管理のためのフックで、useStateと似たような機能。<br />useStateはuseReducerに内部実装されている。
+        </p>
       </div>
       <div class="list">
         <h2 class="title">使用例</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <p class="content">
+          <code>
+            const [state, dispatch] = useReducer(reducer, 0);<br />
+            () => dispatch({ type: "increment" })</code
+          >
+        </p>
       </div>
       <div class="list">
         <h2 class="title">コードの説明</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <p class="content">
+          useReducerの第二引数に初期値を設定。<br />dispatchは、reducerを実行するための呼び出し関数。
+        </p>
       </div>
     </div>
     <div class="subtitle">
@@ -311,16 +331,26 @@
     </div>
     <div class="timeline">
       <div class="list">
-        <h2 class="title">useStateの説明</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <h2 class="title">useMemoの説明</h2>
+        <p class="content">
+          関数の結果を保持するためのフックで、<br />何回やっても結果が同じ場合の値などを保存(メモ化)する。
+        </p>
       </div>
       <div class="list">
         <h2 class="title">使用例</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <p class="content">
+          <code>
+            useMemo(() => {<br />
+            //処理をかく<br />
+            }, [count02]);</code
+          >
+        </p>
       </div>
       <div class="list">
         <h2 class="title">コードの説明</h2>
-        <p class="content">詳細<br />ここから改行</p>
+        <p class="content">
+          結果を保持したい処理をuseMemo()で囲う。<br />第二引数には値が更新されるかどうかの対象を指定。
+        </p>
       </div>
     </div>
     <div class="subtitle">
