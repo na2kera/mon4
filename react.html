@@ -39,7 +39,7 @@
         display: inline-block;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.4);
         top: 0;
         left: 0;
         z-index: 2;
@@ -213,16 +213,31 @@
         background-color: #e7edf3;
         border-radius: 3px;
       }
+      .hook {
+        width: 60%;
+        padding: 0.5em 1em;
+        margin: 2em auto;
+        color: #474747;
+        background: whitesmoke;
+        border-left: double 7px #4ec4d3;
+        border-right: double 7px #4ec4d3;
+      }
+      .example {
+        margin: 40px auto;
+        width: 70%;
+      }
+      h1 {
+        color: #364e96;
+        padding: 0.5em 0;
+        border-top: solid 3px #364e96;
+        border-bottom: solid 3px #364e96;
+        width: 70%;
+        margin: 2em auto;
+      }
     </style>
     <script type="application/x-javascript"></script>
   </head>
-  <body
-    style="
-      background-color: #c3f4f4;
-      background-repeat: repeat;
-      background-attachment: fixed;
-    "
-  >
+  <body>
     <header class="header">
       <div class="header-container">
         <input id="nav-input" type="checkbox" class="nav-hidden" />
@@ -248,7 +263,8 @@
         </nav>
       </div>
     </header>
-    <div class="state">
+    <h1>React hooks</h1>
+    <div class="hook">
       <div class="subtitle">
         <h2 id="useState"><span>u</span>seState</h2>
       </div>
@@ -276,7 +292,7 @@
         </div>
       </div>
     </div>
-    <div class="ref">
+    <div class="hook">
       <div class="subtitle">
         <h2 id="useRef"><span>u</span>seRef</h2>
       </div>
@@ -304,7 +320,7 @@
         </div>
       </div>
     </div>
-    <div class="reducer">
+    <div class="hook">
       <div class="subtitle">
         <h2 id="useReducer"><span>u</span>seReducer</h2>
       </div>
@@ -332,7 +348,7 @@
         </div>
       </div>
     </div>
-    <div class="memo">
+    <div class="hook">
       <div class="subtitle">
         <h2 id="useMemo"><span>u</span>seMemo</h2>
       </div>
@@ -361,10 +377,8 @@
         </div>
       </div>
     </div>
+    <h1>Example</h1>
     <div class="example">
-      <div class="subtitle">
-        <h2 id="example"><span>E</span>xample</h2>
-      </div>
       <div class="service-container container">
         <ul class="item2">
           <li class="list2">
