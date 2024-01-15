@@ -248,159 +248,171 @@
         </nav>
       </div>
     </header>
-    <div class="subtitle">
-      <h2 id="useState"><span>u</span>seState</h2>
-    </div>
-    <div class="timeline">
-      <div class="list">
-        <h2 class="title">useStateの説明</h2>
-        <p class="content">
-          関数コンポーネントでstateを管理（stateの保持や更新）するための<br />Reactフック。
-        </p>
+    <div class="state">
+      <div class="subtitle">
+        <h2 id="useState"><span>u</span>seState</h2>
       </div>
-      <div class="list">
-        <h2 class="title">使用例</h2>
-        <p class="content">
-          <code>
-            const [count, setCount] = useState(0);<br />setCount(count +
-            1);</code
-          >
-        </p>
-      </div>
-      <div class="list">
-        <h2 class="title">コードの説明</h2>
-        <p class="content">
-          useStateの引数で初期化<br />setCountが呼び出されるごとに変数を更新。<br />ある関数内でも呼び出せる。
-        </p>
-      </div>
-    </div>
-    <div class="subtitle">
-      <h2 id="useRef"><span>u</span>seRef</h2>
-    </div>
-    <div class="timeline">
-      <div class="list">
-        <h2 class="title">useRefの説明</h2>
-        <p class="content">
-          DOMを参照して要素にアクセスするためのhooks<br />レンダリングを起こさず値を保持する
-        </p>
-      </div>
-      <div class="list">
-        <h2 class="title">使用例</h2>
-        <p class="content">
-          <code>
-            const ref = useRef(null);<br />
-            console.log(ref.current.value);</code
-          >
-        </p>
-      </div>
-      <div class="list">
-        <h2 class="title">コードの説明</h2>
-        <p class="content">
-          useRefの引数で値を初期化。<br />ref変数に値を格納。<br />ref.current.valueで入力された値を取り出す。
-        </p>
-      </div>
-    </div>
-    <div class="subtitle">
-      <h2 id="useReducer"><span>u</span>seReducer</h2>
-    </div>
-    <div class="timeline">
-      <div class="list">
-        <h2 class="title">useReducerの説明</h2>
-        <p class="content">
-          状態管理のためのフックで、useStateと似たような機能。<br />useStateはuseReducerに内部実装されている。
-        </p>
-      </div>
-      <div class="list">
-        <h2 class="title">使用例</h2>
-        <p class="content">
-          <code>
-            const [state, dispatch] = useReducer(reducer, 0);<br />
-            () => dispatch({ type: "increment" })</code
-          >
-        </p>
-      </div>
-      <div class="list">
-        <h2 class="title">コードの説明</h2>
-        <p class="content">
-          useReducerの第二引数に初期値を設定。<br />dispatchは、reducerを実行するための呼び出し関数。
-        </p>
-      </div>
-    </div>
-    <div class="subtitle">
-      <h2 id="useMemo"><span>u</span>seMemo</h2>
-    </div>
-    <div class="timeline">
-      <div class="list">
-        <h2 class="title">useMemoの説明</h2>
-        <p class="content">
-          関数の結果を保持するためのフックで、<br />何回やっても結果が同じ場合の値などを保存(メモ化)する。
-        </p>
-      </div>
-      <div class="list">
-        <h2 class="title">使用例</h2>
-        <p class="content">
-          <code>
-            useMemo(() => {<br />
-            //処理をかく<br />
-            }, [count02]);</code
-          >
-        </p>
-      </div>
-      <div class="list">
-        <h2 class="title">コードの説明</h2>
-        <p class="content">
-          結果を保持したい処理をuseMemo()で囲う。<br />第二引数には値が更新されるかどうかの対象を指定。
-        </p>
-      </div>
-    </div>
-    <div class="subtitle">
-      <h2 id="example"><span>E</span>xample</h2>
-    </div>
-    <div class="service-container container">
-      <ul class="item2">
-        <li class="list2">
-          <div class="image">
-            <img src="./useState.png" alt="useStateの写真" />
-          </div>
-          <h3 class="title">useState</h3>
-          <p class="content">カウントアップするサンプル</p>
-          <a href="https://react-hooks-mocha.vercel.app/useState" class="btn"
-            >詳しく見る</a
-          >
-        </li>
-        <li class="list2">
-          <div class="image">
-            <img src="./useRef.png" alt="useRefの写真" />
-          </div>
-          <h3 class="title">useRef</h3>
-          <p class="content">ボックスの中身を所得するサンプル</p>
-          <a href="https://react-hooks-mocha.vercel.app/useRef" class="btn"
-            >詳しく見る</a
-          >
-        </li>
-        <li class="list2">
-          <div class="image">
-            <img src="./useReducer.png" alt="useReducerの写真" />
-          </div>
-          <h3 class="title">useReducer</h3>
-          <p class="content">差分を見てカウントの値を変更するサンプル</p>
-          <a href="https://react-hooks-mocha.vercel.app/useReducer" class="btn"
-            >詳しく見る</a
-          >
-        </li>
-        <li class="list2">
-          <div class="image">
-            <img src="./useMemo.png" alt="useMemoの写真" />
-          </div>
-          <h3 class="title">useMemo</h3>
+      <div class="timeline">
+        <div class="list">
+          <h2 class="title">useStateの説明</h2>
           <p class="content">
-            一度処理したものをストレージに残しておくサンプル
+            関数コンポーネントでstateを管理（stateの保持や更新）するための<br />Reactフック。
           </p>
-          <a href="https://react-hooks-mocha.vercel.app/useMemo" class="btn"
-            >詳しく見る</a
-          >
-        </li>
-      </ul>
+        </div>
+        <div class="list">
+          <h2 class="title">使用例</h2>
+          <p class="content">
+            <code>
+              const [count, setCount] = useState(0);<br />setCount(count +
+              1);</code
+            >
+          </p>
+        </div>
+        <div class="list">
+          <h2 class="title">コードの説明</h2>
+          <p class="content">
+            useStateの引数で初期化<br />setCountが呼び出されるごとに変数を更新。<br />ある関数内でも呼び出せる。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="ref">
+      <div class="subtitle">
+        <h2 id="useRef"><span>u</span>seRef</h2>
+      </div>
+      <div class="timeline">
+        <div class="list">
+          <h2 class="title">useRefの説明</h2>
+          <p class="content">
+            DOMを参照して要素にアクセスするためのhooks<br />レンダリングを起こさず値を保持する
+          </p>
+        </div>
+        <div class="list">
+          <h2 class="title">使用例</h2>
+          <p class="content">
+            <code>
+              const ref = useRef(null);<br />
+              console.log(ref.current.value);</code
+            >
+          </p>
+        </div>
+        <div class="list">
+          <h2 class="title">コードの説明</h2>
+          <p class="content">
+            useRefの引数で値を初期化。<br />ref変数に値を格納。<br />ref.current.valueで入力された値を取り出す。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="reducer">
+      <div class="subtitle">
+        <h2 id="useReducer"><span>u</span>seReducer</h2>
+      </div>
+      <div class="timeline">
+        <div class="list">
+          <h2 class="title">useReducerの説明</h2>
+          <p class="content">
+            状態管理のためのフックで、useStateと似たような機能。<br />useStateはuseReducerに内部実装されている。
+          </p>
+        </div>
+        <div class="list">
+          <h2 class="title">使用例</h2>
+          <p class="content">
+            <code>
+              const [state, dispatch] = useReducer(reducer, 0);<br />
+              () => dispatch({ type: "increment" })</code
+            >
+          </p>
+        </div>
+        <div class="list">
+          <h2 class="title">コードの説明</h2>
+          <p class="content">
+            useReducerの第二引数に初期値を設定。<br />dispatchは、reducerを実行するための呼び出し関数。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="memo">
+      <div class="subtitle">
+        <h2 id="useMemo"><span>u</span>seMemo</h2>
+      </div>
+      <div class="timeline">
+        <div class="list">
+          <h2 class="title">useMemoの説明</h2>
+          <p class="content">
+            関数の結果を保持するためのフックで、<br />何回やっても結果が同じ場合の値などを保存(メモ化)する。
+          </p>
+        </div>
+        <div class="list">
+          <h2 class="title">使用例</h2>
+          <p class="content">
+            <code>
+              useMemo(() => {<br />
+              //処理をかく<br />
+              }, [count02]);</code
+            >
+          </p>
+        </div>
+        <div class="list">
+          <h2 class="title">コードの説明</h2>
+          <p class="content">
+            結果を保持したい処理をuseMemo()で囲う。<br />第二引数には値が更新されるかどうかの対象を指定。
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="example">
+      <div class="subtitle">
+        <h2 id="example"><span>E</span>xample</h2>
+      </div>
+      <div class="service-container container">
+        <ul class="item2">
+          <li class="list2">
+            <div class="image">
+              <img src="./useState.png" alt="useStateの写真" />
+            </div>
+            <h3 class="title">useState</h3>
+            <p class="content">カウントアップするサンプル</p>
+            <a href="https://react-hooks-mocha.vercel.app/useState" class="btn"
+              >詳しく見る</a
+            >
+          </li>
+          <li class="list2">
+            <div class="image">
+              <img src="./useRef.png" alt="useRefの写真" />
+            </div>
+            <h3 class="title">useRef</h3>
+            <p class="content">ボックスの中身を所得するサンプル</p>
+            <a href="https://react-hooks-mocha.vercel.app/useRef" class="btn"
+              >詳しく見る</a
+            >
+          </li>
+          <li class="list2">
+            <div class="image">
+              <img src="./useReducer.png" alt="useReducerの写真" />
+            </div>
+            <h3 class="title">useReducer</h3>
+            <p class="content">差分を見てカウントの値を変更するサンプル</p>
+            <a
+              href="https://react-hooks-mocha.vercel.app/useReducer"
+              class="btn"
+              >詳しく見る</a
+            >
+          </li>
+          <li class="list2">
+            <div class="image">
+              <img src="./useMemo.png" alt="useMemoの写真" />
+            </div>
+            <h3 class="title">useMemo</h3>
+            <p class="content">
+              一度処理したものをストレージに残しておくサンプル
+            </p>
+            <a href="https://react-hooks-mocha.vercel.app/useMemo" class="btn"
+              >詳しく見る</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>
